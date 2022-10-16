@@ -2,6 +2,7 @@ package com.example.coursework;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
@@ -56,5 +57,15 @@ public class ExpenseDatabase extends SQLiteOpenHelper {
         }else {
             Toast.makeText(context, "Add Successfully!", Toast.LENGTH_SHORT).show();
         }
+    }
+    Cursor readAllDataExpense(){
+        String query2 = "SELECT * FROM " + TABLE_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = null;
+        if (db != null){
+            cursor = db.rawQuery(query2, null);
+        }
+        return cursor;
     }
 }
