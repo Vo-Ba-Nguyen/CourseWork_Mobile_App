@@ -23,6 +23,7 @@ public class ExpenseActivity extends AppCompatActivity {
     ExpenseDatabase exDb;
     ArrayList<String> expense_id, type_expense, amount_expense, date_of_expense;
     ExpenseCustomAdapter expenseCustomAdapter;
+    String trip_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,11 +31,13 @@ public class ExpenseActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerView_expense);
         add_expense_button = findViewById(R.id.add_expense_button);
+        trip_id = getIntent().getStringExtra("trip_id");
         add_expense_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ExpenseActivity.this, AddExpenseActivity.class);
-                startActivity(intent    );
+                intent.putExtra("trip_id",trip_id);
+                startActivity(intent);
             }
         });
 
@@ -51,7 +54,7 @@ public class ExpenseActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(ExpenseActivity.this));
     }
     void displayExpense(){
-        Cursor cursor = exDb.readAllDataExpense();
+        Cursor cursor = exDb.readAllDataExpense(trip_id);
         if (cursor.getCount() == 0){
             Toast.makeText(this, "No data", Toast.LENGTH_SHORT).show();
         }else {

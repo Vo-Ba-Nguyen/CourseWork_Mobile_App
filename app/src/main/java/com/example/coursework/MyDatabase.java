@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+
 public class MyDatabase extends SQLiteOpenHelper {
 
     private Context context;
@@ -102,5 +104,30 @@ public class MyDatabase extends SQLiteOpenHelper {
     void deleteAllData(){
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("DELETE FROM " + TABLE_NAME);
+    }
+
+    ArrayList<TripModel> showAll(){
+        ArrayList<TripModel> tripModelArrayList = null;
+
+        tripModelArrayList = new ArrayList<TripModel>();
+        try {
+            SQLiteDatabase db = getReadableDatabase();
+            String query = "SELECT * FROM " + TABLE_NAME;
+            Cursor cursor = db.rawQuery(query, null);
+            while (cursor.moveToNext()){
+                TripModel model = new TripModel();
+                model.setId(cursor.getInt(0));
+                model.setTripName(cursor.getString(1));
+                model.setTripDestination(cursor.getString(2));
+                model.setTripDate(cursor.getString(3));
+                model.setTripAssessment(cursor.getString(4));
+                model.setTripDescription(cursor.getString(5));
+                tripModelArrayList.add(model);
+            }
+
+        } catch (Exception e ){
+            tripModelArrayList = null;
+        }
+        return tripModelArrayList;
     }
 }

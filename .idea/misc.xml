@@ -6,14 +6,19 @@
         <entry key="..\:/ChuyenNganh/Assignment_MobileApp/CourseWork/app/src/main/res/drawable/border.xml" value="0.1325" />
         <entry key="..\:/ChuyenNganh/Assignment_MobileApp/CourseWork/app/src/main/res/drawable/ic_baseline_delete.xml" value="0.2335" />
         <entry key="..\:/ChuyenNganh/Assignment_MobileApp/CourseWork/app/src/main/res/drawable/ic_blank_file_svgrepo_com.xml" value="0.117" />
+        <entry key="..\:/ChuyenNganh/Assignment_MobileApp/CourseWork/app/src/main/res/drawable/selector.xml" value="0.2335" />
         <entry key="..\:/ChuyenNganh/Assignment_MobileApp/CourseWork/app/src/main/res/layout/activity_add.xml" value="0.264" />
         <entry key="..\:/ChuyenNganh/Assignment_MobileApp/CourseWork/app/src/main/res/layout/activity_add_expense.xml" value="0.25" />
         <entry key="..\:/ChuyenNganh/Assignment_MobileApp/CourseWork/app/src/main/res/layout/activity_expense.xml" value="0.2421875" />
         <entry key="..\:/ChuyenNganh/Assignment_MobileApp/CourseWork/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/ChuyenNganh/Assignment_MobileApp/CourseWork/app/src/main/res/layout/activity_search.xml" value="0.2421875" />
         <entry key="..\:/ChuyenNganh/Assignment_MobileApp/CourseWork/app/src/main/res/layout/activity_update.xml" value="0.2421875" />
+        <entry key="..\:/ChuyenNganh/Assignment_MobileApp/CourseWork/app/src/main/res/layout/activity_update_expense.xml" value="0.1" />
         <entry key="..\:/ChuyenNganh/Assignment_MobileApp/CourseWork/app/src/main/res/layout/expense_row.xml" value="0.4" />
         <entry key="..\:/ChuyenNganh/Assignment_MobileApp/CourseWork/app/src/main/res/layout/my_row.xml" value="0.264" />
+        <entry key="..\:/ChuyenNganh/Assignment_MobileApp/CourseWork/app/src/main/res/menu/menu_navigation.xml" value="0.2421875" />
         <entry key="..\:/ChuyenNganh/Assignment_MobileApp/CourseWork/app/src/main/res/menu/my_menu.xml" value="0.2421875" />
+        <entry key="..\:/ChuyenNganh/Assignment_MobileApp/CourseWork/app/src/main/res/menu/search_menu.xml" value="0.2421875" />
       </map>
     </option>
   </component>

@@ -1,9 +1,12 @@
 package com.example.coursework;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,6 +18,7 @@ public class ExpenseCustomAdapter extends RecyclerView.Adapter<ExpenseCustomAdap
 
     private Context context;
     private ArrayList expense_id, type_expense, amount_expense, date_of_expense;
+
 
     ExpenseCustomAdapter(Context context, ArrayList expense_id, ArrayList type_expense, ArrayList amount_expense,
                          ArrayList date_of_expense){
@@ -34,12 +38,23 @@ public class ExpenseCustomAdapter extends RecyclerView.Adapter<ExpenseCustomAdap
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewExpense holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewExpense holder, @SuppressLint("RecyclerView") int position) {
 
         holder.expense_id_txt.setText(String.valueOf(expense_id.get(position)));
         holder.type_expense_txt.setText(String.valueOf(type_expense.get(position)));
         holder.amount_expense_txt.setText(String.valueOf(amount_expense.get(position)));
         holder.date_expense_txt.setText(String.valueOf(date_of_expense.get(position)));
+        holder.expenseLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, UpdateExpenseActivity.class);
+                intent.putExtra("id", String.valueOf(expense_id.get(position)));
+                intent.putExtra("type", String.valueOf(type_expense.get(position)));
+                intent.putExtra("amount", String.valueOf(amount_expense.get(position)));
+                intent.putExtra("date_of_expense", String.valueOf(date_of_expense.get(position)));
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -50,13 +65,15 @@ public class ExpenseCustomAdapter extends RecyclerView.Adapter<ExpenseCustomAdap
     public class MyViewExpense extends RecyclerView.ViewHolder {
 
         TextView expense_id_txt, type_expense_txt, date_expense_txt, amount_expense_txt;
+        LinearLayout expenseLayout;
+
         public MyViewExpense(@NonNull View itemView) {
             super(itemView);
             expense_id_txt = itemView.findViewById(R.id.expense_id_txt);
             type_expense_txt = itemView.findViewById(R.id.type_expense_txt);
             amount_expense_txt = itemView.findViewById(R.id.amount_expense_txt);
             date_expense_txt = itemView.findViewById(R.id.date_expense_txt);
-
+            expenseLayout = itemView.findViewById(R.id.expenseLayout);
 
         }
     }

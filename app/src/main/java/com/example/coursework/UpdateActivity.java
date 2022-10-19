@@ -69,8 +69,10 @@ public class UpdateActivity extends AppCompatActivity {
                 MyDatabase myDB = new MyDatabase(UpdateActivity.this);
                 int assessmentGroup = radioGroup.getCheckedRadioButtonId();
                 RadioButton radioButton = findViewById(assessmentGroup);
+                assessment = radioButton.getText().toString();
                 myDB.updateData(id,name,destination,date,assessment,description);
                 Intent intent = new Intent(UpdateActivity.this, MainActivity.class);
+
                 startActivity(intent);
             }
         });
@@ -84,6 +86,7 @@ public class UpdateActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(UpdateActivity.this, ExpenseActivity.class);
+                intent.putExtra("trip_id", id);
                 startActivity(intent);
 
             }
@@ -107,6 +110,7 @@ public class UpdateActivity extends AppCompatActivity {
             destination_input.setText(destination);
             date_input.setText(date);
             radioGroup = (RadioGroup) findViewById(R.id.radioGroup_button2);
+
             description_input.setText(description);
         }else {
             Toast.makeText(this, "No Data", Toast.LENGTH_SHORT).show();
