@@ -44,7 +44,8 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
-                    case R.id.trip:startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                    case R.id.trip:
+                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.search:
@@ -74,10 +75,10 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 return false;
-            }
+            }   //search Submit to get input text
 
             @Override
-            public boolean onQueryTextChange(String newText) {
+            public boolean onQueryTextChange(String newText) {              //to get data on input (change to filter)
                 // inside on query text change method we are
                 // calling a method to filter our recycler view.
                 filter(newText);

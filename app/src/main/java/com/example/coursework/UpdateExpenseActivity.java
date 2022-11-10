@@ -16,7 +16,7 @@ public class UpdateExpenseActivity extends AppCompatActivity {
     EditText amount_input, time_input;
     Button update_expense_button;
 
-    String id, type, amount, date_of_expense;
+    String id, type, amount, date_of_expense, trip_id;
 
     private final String[] typeStatusArray = {
             "Travel",
@@ -39,6 +39,7 @@ public class UpdateExpenseActivity extends AppCompatActivity {
         time_input   = findViewById(R.id.time_input2);
         update_expense_button = findViewById(R.id.update_expense_button);
 
+
         getAndSetIntentDataExpense();
         update_expense_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,6 +51,7 @@ public class UpdateExpenseActivity extends AppCompatActivity {
                 ExpenseDatabase exDb = new ExpenseDatabase(UpdateExpenseActivity.this);
                 exDb.updateExpenseData(id, type, amount, date_of_expense);
                 Intent intent = new Intent(UpdateExpenseActivity.this, ExpenseActivity.class);
+                intent.putExtra("trip_id",trip_id);
                 startActivity(intent);
             }
         });
@@ -64,6 +66,7 @@ public class UpdateExpenseActivity extends AppCompatActivity {
             type = getIntent().getStringExtra("type");
             amount = getIntent().getStringExtra("amount");
             date_of_expense = getIntent().getStringExtra("date_of_expense");
+            trip_id = getIntent().getStringExtra("trip_id");
 
 
             //Setting Intent Data

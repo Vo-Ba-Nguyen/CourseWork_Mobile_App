@@ -50,13 +50,32 @@ public class AddActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 MyDatabase myDB = new MyDatabase(AddActivity.this);
-                myDB.addTrip(name_input.getText().toString().trim(),
-                        destination_input.getText().toString().trim(),
-                        date_input.getText().toString().trim(),
-                        ((RadioButton)findViewById(radioGroup.getCheckedRadioButtonId())).getText().toString(),
-                        description_input.getText().toString().trim());
+                String name = name_input.getText().toString().trim(),
+                        destination = destination_input.getText().toString().trim(),
+                        date = date_input.getText().toString().trim(),
+                        description = description_input.getText().toString().trim();
 
-                displayAlert();
+                if(name.length() == 0){
+                    checkNullAlert();
+                } else if (destination.length() == 0){
+                    checkNullAlert();
+                } else if (date.length() == 0){
+                    checkNullAlert();
+                } else  if (radioGroup.getCheckedRadioButtonId() == -1){
+                    checkNullAlert();
+                } else if (description.length() == 0){
+                    checkNullAlert();
+                } else {
+                    myDB.addTrip(name_input.getText().toString().trim(),
+                            destination_input.getText().toString().trim(),
+                            date_input.getText().toString().trim(),
+                            ((RadioButton)findViewById(radioGroup.getCheckedRadioButtonId())).getText().toString(),
+                            description_input.getText().toString().trim());
+
+                    displayAlert();
+                }
+
+
             }
         });
     }
@@ -77,5 +96,15 @@ public class AddActivity extends AppCompatActivity {
     }
 
     public void updateDate(LocalDate date) { date_input.setText(date.toString());
+    }
+
+    void checkNullAlert(){
+        new AlertDialog.Builder(this).setMessage(
+                "You need to enter data into the inputs").setNeutralButton("Back", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        }).show();
     }
 }

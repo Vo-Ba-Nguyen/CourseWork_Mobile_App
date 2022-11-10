@@ -49,7 +49,7 @@ public class ExpenseActivity extends AppCompatActivity {
 
         displayExpense();
 
-        expenseCustomAdapter = new ExpenseCustomAdapter(ExpenseActivity.this, expense_id, type_expense, amount_expense, date_of_expense );
+        expenseCustomAdapter = new ExpenseCustomAdapter(ExpenseActivity.this, expense_id, type_expense, amount_expense, date_of_expense, trip_id );
         recyclerView.setAdapter(expenseCustomAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(ExpenseActivity.this));
     }

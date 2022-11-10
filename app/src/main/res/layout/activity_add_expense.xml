@@ -48,7 +48,7 @@
         android:layout_height="58dp"
         android:ems="10"
         android:hint="Amount"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:text=""
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

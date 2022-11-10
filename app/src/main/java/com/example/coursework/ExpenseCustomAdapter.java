@@ -18,15 +18,17 @@ public class ExpenseCustomAdapter extends RecyclerView.Adapter<ExpenseCustomAdap
 
     private Context context;
     private ArrayList expense_id, type_expense, amount_expense, date_of_expense;
+    private String trip_id;
 
 
     ExpenseCustomAdapter(Context context, ArrayList expense_id, ArrayList type_expense, ArrayList amount_expense,
-                         ArrayList date_of_expense){
+                         ArrayList date_of_expense, String trip_id){
         this.context = context;
         this.expense_id = expense_id;
         this.type_expense = type_expense;
         this.amount_expense = amount_expense;
         this.date_of_expense = date_of_expense;
+        this.trip_id = trip_id;
     }
 
     @NonNull
@@ -52,6 +54,7 @@ public class ExpenseCustomAdapter extends RecyclerView.Adapter<ExpenseCustomAdap
                 intent.putExtra("type", String.valueOf(type_expense.get(position)));
                 intent.putExtra("amount", String.valueOf(amount_expense.get(position)));
                 intent.putExtra("date_of_expense", String.valueOf(date_of_expense.get(position)));
+                intent.putExtra("trip_id", trip_id);
                 context.startActivity(intent);
             }
         });

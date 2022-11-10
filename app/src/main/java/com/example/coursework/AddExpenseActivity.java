@@ -2,7 +2,9 @@ package com.example.coursework;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -48,13 +50,22 @@ public class AddExpenseActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 ExpenseDatabase exDb = new ExpenseDatabase(AddExpenseActivity.this);
-                exDb.addExpense( spinnerType.getSelectedItem().toString(),
-                        amount_input.getText().toString().trim(),
-                        time_input.getText().toString().trim(),
-                        trip_id);
-                Intent intent = new Intent(AddExpenseActivity.this, ExpenseActivity.class);
-                intent.putExtra("trip_id",trip_id);
-                startActivity(intent);
+
+                if (amount_input.length() ==0){
+                    checkNullAlert();
+                }
+                else if (time_input.length() == 0){
+                    checkNullAlert();
+                }else {
+                    exDb.addExpense( spinnerType.getSelectedItem().toString(),
+                            amount_input.getText().toString().trim(),
+                            time_input.getText().toString().trim(),
+                            trip_id);
+                    Intent intent = new Intent(AddExpenseActivity.this, ExpenseActivity.class);
+                    intent.putExtra("trip_id",trip_id);
+                    startActivity(intent);
+                }
+
             }
         });
         time_input.setOnClickListener(new View.OnClickListener() {
@@ -75,5 +86,14 @@ public class AddExpenseActivity extends AppCompatActivity {
                 datePickerDialog.show();
             }
         });
+    }
+    void checkNullAlert(){
+        new AlertDialog.Builder(this).setMessage(
+                "You need to fill all required fields").setNeutralButton("Close", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        }).show();
     }
 }
